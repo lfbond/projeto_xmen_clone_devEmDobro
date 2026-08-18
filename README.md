@@ -1,58 +1,127 @@
-# X-Men Clone - Dev em Dobro
+# X-Men Clone | Dev em Dobro
 
-Bem-vindo ao **X-Men Clone**, um projeto inspirado no desafio proposto pelo canal [Dev em Dobro](https://www.youtube.com/@devemdobro). Este projeto recria uma interface interativa que imita o famoso menu da série animada dos X-Men dos anos 90, com animações e efeitos visuais impressionantes.
+Interface interativa inspirada no menu da série animada **X-Men**, desenvolvida a partir de um desafio do canal [Dev em Dobro](https://www.youtube.com/@devemdobro). O projeto recria a atmosfera visual dos anos 90 com cards de personagens, imagem em destaque e layout responsivo.
 
-## 🎯 Objetivo
+> Projeto educacional de front-end, feito para praticar HTML, CSS e JavaScript puro.
 
-O objetivo deste projeto é aplicar conceitos de HTML, CSS e JavaScript para recriar a experiência visual do menu original dos X-Men. A ideia é consolidar o aprendizado em web design e animações utilizando apenas tecnologias front-end.
+## Demonstração
 
-## Imagem do Site:
+Confira a versão publicada no GitHub Pages: [X-Men Clone](https://lfbond.github.io/projeto_xmen_clone_devEmDobro/).
 
-![Captura de Tela (31)](https://github.com/lfbond/projeto_xmen_clone_devEmDobro/assets/69223872/1c601df0-3ee4-47a4-a85b-547a70c428c2)
+![Prévia do X-Men Clone](https://github.com/lfbond/projeto_xmen_clone_devEmDobro/assets/69223872/1c601df0-3ee4-47a4-a85b-547a70c428c2)
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-- **Animação Interativa**: Quando o usuário passa o mouse sobre cada membro dos X-Men, surgem efeitos visuais e de transição suaves.
-- **Design Fiel ao Original**: A interface imita fielmente o visual da série animada dos anos 90, com cores vibrantes e uma estética retrô.
-- **Responsividade**: O site se adapta a diferentes tamanhos de tela, garantindo que a experiência seja boa tanto em dispositivos móveis quanto em desktops.
+- Exibição de oito personagens: Ciclope, Jean Grey, Lince Negra, Tempestade, Vampira, Wolverine, Noturno e Magneto.
+- Seleção de personagem ao passar o mouse sobre um card.
+- Atualização dinâmica da imagem, do nome e da descrição do personagem selecionado.
+- Destaque visual do card ativo com borda e sombra.
+- Rolagem automática para o topo em telas muito pequenas, facilitando a visualização do personagem selecionado.
+- Layout adaptado para desktops, tablets e dispositivos móveis.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias
 
-- **HTML5**: Estrutura da página.
-- **CSS3**: Estilização avançada, animações e efeitos visuais.
-- **JavaScript**: Interatividade e manipulação de eventos para criar animações dinâmicas.
-- **GitHub Pages**: Hospedagem do site.
+- **HTML5** para a estrutura semântica da página.
+- **CSS3** para layout, cores, tipografia, fundo e responsividade.
+- **JavaScript** para eventos de seleção e atualização dos dados exibidos.
+- **Google Fonts** para carregar a fonte Oxanium.
+- **GitHub Pages** para publicação da demonstração.
 
-## 📦 Como Executar o Projeto
+Não há framework, gerenciador de pacotes ou processo de compilação. O navegador executa os arquivos diretamente.
 
-1. Clone este repositório em sua máquina local:
-    ```bash
-    git clone https://github.com/lfbond/projeto_xmen_clone_devEmDobro.git
-    ```
+## Estrutura do projeto
 
-2. Navegue até o diretório do projeto:
-    ```bash
-    cd projeto_xmen_clone_devEmDobro
-    ```
+```text
+.
+├── index.html                 # Página principal
+├── src/
+│   ├── assets/                # Imagens, logo e favicon
+│   ├── css/
+│   │   ├── reset.css          # Reset básico dos estilos
+│   │   ├── estilos.css        # Estilos principais da interface
+│   │   └── responsivo.css     # Regras para telas menores
+│   └── js/
+│       └── index.js           # Lógica de seleção dos personagens
+└── README.md
+```
 
-3. Abra o arquivo `index.html` no seu navegador:
-    ```bash
-    open index.html
-    ```
-    Ou simplesmente visite o site hospedado no GitHub Pages: [X-Men Clone](https://lfbond.github.io/projeto_xmen_clone_devEmDobro/).
+## Como executar localmente
 
-## 🎨 Melhorias Futuras
+Como este é um projeto estático, basta clonar o repositório e abrir o `index.html` no navegador.
 
-- **Áudio Interativo**: Implementação de sons e trilhas da série animada para uma experiência ainda mais imersiva.
-- **Mais Personagens**: Adição de novos membros dos X-Men e outros vilões icônicos.
-- **Funcionalidades Dinâmicas**: Introduzir animações ao clicar nos personagens, levando o usuário a páginas com mais informações sobre cada um.
+### 1. Clonar o repositório
 
-## 💡 Contribuições
+```bash
+git clone https://github.com/lfbond/projeto_xmen_clone_devEmDobro.git
+cd projeto_xmen_clone_devEmDobro
+```
 
-Contribuições são bem-vindas! Caso tenha sugestões, encontre algum bug ou queira colaborar com novas funcionalidades, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_.
+### 2. Abrir a aplicação
 
-## 📄 Licença
+No Windows, abra o arquivo `index.html` pelo Explorador de Arquivos ou execute:
 
-Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais informações.
+```powershell
+start .\index.html
+```
+
+No macOS:
+
+```bash
+open index.html
+```
+
+No Linux:
+
+```bash
+xdg-open index.html
+```
+
+Também é possível usar a extensão **Live Server** do VS Code para servir o projeto localmente e recarregar a página automaticamente durante o desenvolvimento.
+
+## Como funciona
+
+Cada card de personagem possui um `id`, um nome e uma descrição em atributos `data-*` no HTML. O arquivo `src/js/index.js` escuta o evento `mouseenter` e, quando a seleção muda:
+
+1. Remove a classe `selecionado` do card anterior.
+2. Adiciona a classe ao card atual.
+3. Monta o caminho da imagem correspondente usando o `id` do personagem.
+4. Atualiza o nome e a descrição na área de destaque.
+
+Para adicionar um personagem, inclua o card e seus dados no `index.html` e disponibilize as imagens com os nomes esperados em `src/assets/`:
+
+```text
+card-id-do-personagem.jpg
+card-id-do-personagem.png
+```
+
+## Melhorias planejadas
+
+- Adicionar suporte à seleção por clique e teclado, além do mouse.
+- Incluir informações detalhadas de cada personagem.
+- Adicionar efeitos sonoros opcionais, respeitando direitos autorais.
+- Expandir a lista com mais personagens e vilões.
+- Melhorar a acessibilidade com foco visível, navegação por teclado e estados adequados para leitores de tela.
+
+## Contribuição
+
+1. Faça um fork do projeto.
+2. Crie uma branch para sua alteração:
+
+   ```bash
+   git checkout -b minha-melhoria
+   ```
+
+3. Faça as alterações e teste a interface em diferentes tamanhos de tela.
+4. Envie um pull request descrevendo o que foi alterado.
+
+Sugestões e relatos de problemas também podem ser enviados pela seção de [issues](https://github.com/lfbond/projeto_xmen_clone_devEmDobro/issues).
+
+## Créditos
+
+Projeto inspirado no desafio do [Dev em Dobro](https://www.youtube.com/@devemdobro). As imagens e os personagens pertencem aos seus respectivos detentores de direitos. Este repositório tem finalidade educacional.
+
+## Licença
+
+Não há um arquivo `LICENSE` no repositório no momento. Defina e adicione uma licença ao projeto antes de distribuí-lo oficialmente.
 
 
