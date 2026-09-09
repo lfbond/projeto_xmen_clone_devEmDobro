@@ -1,0 +1,151 @@
+/* ======================
+   LAYOUT RESPONSIVO
+   ====================== */
+
+.character-grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mobile first: 375px */
+.character-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Tablet: 768px */
+@media (min-width: 768px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 1440px */
+@media (min-width: 1440px) {
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ======================
+   CHARACTER CARD
+   ====================== */
+
+.character-card {
+  background: var(--card-bg, #ffffff);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.character-card.selected {
+  border: 3px solid #007bff;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+/* ======================
+   CHARACTER BUTTON (semântico)
+   ====================== */
+
+.character-button {
+  all: unset; /* Reset completo */
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+
+/* Foco visível apenas para teclado */
+.character-button:focus-visible {
+  outline: 3px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Estilo quando selecionado e com foco */
+.character-button[aria-selected="true"]:focus-visible {
+  outline: 3px solid #0056b3;
+  outline-offset: 2px;
+}
+
+/* ======================
+   IMAGEM
+   ====================== */
+
+.character-button img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: #f0f0f0;
+}
+
+/* ======================
+   INFO DO PERSONAGEM
+   ====================== */
+
+.character-info {
+  padding: 1rem;
+}
+
+.character-info h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.character-info .real-name {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.character-info .power {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* ======================
+   ESTADOS
+   ====================== */
+
+/* Quando selecionado, destaca o nome */
+.character-card.selected .character-info h3 {
+  color: #007bff;
+}
+
+/* Feedback visual para hover (mouse) */
+.character-button:hover .character-info h3 {
+  text-decoration: underline;
+}
+
+/* ======================
+   ANIMAÇÃO DE SELEÇÃO
+   ====================== */
+
+.character-card {
+  transition: border 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.character-card.selected {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
