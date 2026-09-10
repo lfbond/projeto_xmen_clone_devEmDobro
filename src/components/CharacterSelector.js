@@ -1,4 +1,8 @@
-import { characters, getCharacterById } from "../data/characters.js";
+import {
+  characters,
+  getCharacterById,
+  searchCharacters,
+} from "../data/characters.js";
 
 // Estado da aplicação
 let state = {

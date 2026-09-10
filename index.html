@@ -3,39 +3,215 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>X-Men - Seleção de Personagens</title>
-    <link rel="stylesheet" href="src/styles/character-selector.css" />
+    <title>🧬 X-Men - Seleção de Personagens</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/css/reset.css" />
+    <link rel="stylesheet" href="src/css/estilos.css" />
+    <link rel="stylesheet" href="src/css/responsivo.css" />
+    <link rel="stylesheet" href="src/css/character-selector.css" />
+
+    <link rel="icon" href="./src/assets/X-men_favicon.ico" type="image/svg" />
+
+    <!-- Google Fonts (opcional, para melhorar visual) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <header>
-      <h1>🧬 X-Men: Escolha seu personagem</h1>
-      <p class="subtitle">Use TAB para navegar, ENTER/SPACE para selecionar</p>
+    <!-- ============================================ -->
+    <!-- HEADER                                       -->
+    <!-- ============================================ -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1>🧬 X-Men: Escolha seu personagem</h1>
+        <p class="subtitle">
+          Use <kbd>TAB</kbd> para navegar, <kbd>ENTER</kbd>/<kbd>SPACE</kbd>
+          para selecionar
+        </p>
+      </div>
     </header>
 
+    <!-- ============================================ -->
+    <!-- STATS - SEÇÃO DE ESTATÍSTICAS (AQUI!)       -->
+    <!-- ============================================ -->
+    <section class="stats-section" aria-label="Estatísticas dos mutantes">
+      <div class="stats-container">
+        <!-- Estatística 1: Total -->
+        <div class="stat-item">
+          <span class="stat-icon">🧬</span>
+          <div class="stat-info">
+            <span class="stat-number" id="total-count">0</span>
+            <span class="stat-label">Mutantes</span>
+          </div>
+        </div>
+
+        <!-- Estatística 2: Equipes -->
+        <div class="stat-item">
+          <span class="stat-icon">👥</span>
+          <div class="stat-info">
+            <span class="stat-number" id="team-count">0</span>
+            <span class="stat-label">Equipes</span>
+          </div>
+        </div>
+
+        <!-- Estatística 3: Nível Médio -->
+        <div class="stat-item">
+          <span class="stat-icon">⭐</span>
+          <div class="stat-info">
+            <span class="stat-number" id="avg-level">0</span>
+            <span class="stat-label">Nível Médio</span>
+          </div>
+        </div>
+
+        <!-- Estatística 4: Status -->
+        <div class="stat-item">
+          <span class="stat-icon">🟢</span>
+          <div class="stat-info">
+            <span class="stat-number" id="active-count">0</span>
+            <span class="stat-label">Ativos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de equipes (opcional) -->
+      <div class="teams-list" id="teams-list">
+        <!-- Será preenchido pelo JavaScript -->
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- MAIN - GRADE DE PERSONAGENS                  -->
+    <!-- ============================================ -->
     <main>
-      <!-- Container que será renderizado pelo JavaScript -->
-      <div id="character-grid" class="character-grid" role="list">
-        <!-- Personagens serão inseridos aqui -->
+      <div class="character-grid" id="character-grid" role="list">
+        <!-- Personagens serão inseridos aqui pelo JavaScript -->
       </div>
     </main>
 
-    <footer>
-      <p>Pressione ESC para deselecionar</p>
+    <!-- ============================================ -->
+    <!-- FOOTER                                      -->
+    <!-- ============================================ -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p>
+          💡 <strong>Dica:</strong> Pressione <kbd>ESC</kbd> para deselecionar
+        </p>
+        <p class="footer-credit">
+          Projeto de demonstração - JavaScript Vanilla + Acessibilidade
+        </p>
+      </div>
     </footer>
 
-    <!-- Script principal -->
+    <!-- ============================================ -->
+    <!-- SCRIPTS                                     -->
+    <!-- ============================================ -->
+
+    <!-- Importar dados (para ser usado pelo módulo) -->
     <script type="module">
+      // Importa as funções necessárias
+      import { characters, getCharacterStats } from "./src/data/characters.js";
       import { initCharacterSelector } from "./src/components/CharacterSelector.js";
+
+      // =============================================
+      // 1. ATUALIZAR ESTATÍSTICAS DINAMICAMENTE
+      // =============================================
+
+      function updateStats() {
+        const stats = getCharacterStats();
+
+        // Atualiza total de mutantes
+        const totalEl = document.getElementById("total-count");
+        if (totalEl) {
+          totalEl.textContent = stats.total;
+          // Animação simples
+          totalEl.style.transition = "transform 0.3s";
+          totalEl.style.transform = "scale(1.2)";
+          setTimeout(() => {
+            totalEl.style.transform = "scale(1)";
+          }, 300);
+        }
+
+        // Atualiza número de equipes
+        const teamCountEl = document.getElementById("team-count");
+        if (teamCountEl) {
+          const teamNames = Object.keys(stats.teams);
+          teamCountEl.textContent = teamNames.length;
+        }
+
+        // Atualiza nível médio
+        const avgLevelEl = document.getElementById("avg-level");
+        if (avgLevelEl) {
+          avgLevelEl.textContent = stats.averageLevel.toFixed(1);
+        }
+
+        // Atualiza mutantes ativos
+        const activeCountEl = document.getElementById("active-count");
+        if (activeCountEl) {
+          activeCountEl.textContent = stats.status["Ativo"] || 0;
+        }
+
+        // Atualiza lista de equipes (opcional)
+        updateTeamsList(stats.teams);
+      }
+
+      function updateTeamsList(teams) {
+        const container = document.getElementById("teams-list");
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        // Cria tags para cada equipe
+        Object.entries(teams).forEach(([team, count]) => {
+          const tag = document.createElement("span");
+          tag.className = "team-tag";
+          tag.textContent = `${team} (${count})`;
+
+          // Cores diferentes para cada equipe
+          const colors = {
+            "X-Men": "#0055ff",
+            Irmandade: "#ff0044",
+            "Novos Mutantes": "#00aa55",
+            "X-Force": "#ff6600",
+          };
+          tag.style.setProperty("--team-color", colors[team] || "#666");
+
+          container.appendChild(tag);
+        });
+      }
+
+      // =============================================
+      // 2. INICIALIZAR O SELETOR DE PERSONAGENS
+      // =============================================
 
       // Inicializa o seletor de personagens
       initCharacterSelector("character-grid");
 
-      // Exemplo: ouvir seleção
-      document.addEventListener("characterSelected", (e) => {
-        console.log(
-          `Personagem ${e.detail.characterId} selecionado: ${e.detail.selected}`,
-        );
+      // =============================================
+      // 3. ATUALIZAR STATS QUANDO ALGO MUDAR
+      // =============================================
+
+      // Atualiza stats na inicialização
+      updateStats();
+
+      // Atualiza stats quando um personagem for selecionado
+      document.addEventListener("characterSelected", () => {
+        // Pequeno delay para garantir que o DOM foi atualizado
+        setTimeout(updateStats, 100);
       });
+
+      // =============================================
+      // 4. CONSOLE LOG PARA DEBUG
+      // =============================================
+
+      console.log("✅ X-Men App inicializado!");
+      console.log(`📊 ${characters.length} personagens carregados`);
+      console.log("🎯 Use TAB e ENTER para navegar e selecionar");
+
+      // Expor dados no console para debug
+      window.__XMEN = { characters, getCharacterStats };
     </script>
   </body>
 </html>

@@ -22,8 +22,8 @@
   }
 }
 
-/* Desktop: 1440px */
-@media (min-width: 1440px) {
+/* Desktop: 1040px */
+@media (min-width: 1040px) {
   .character-grid {
     grid-template-columns: repeat(4, 1fr);
   }
