@@ -1,62 +1,543 @@
-# ❌ X-Men — Seleção de Personagens
+# 🧬 X-Men — Character Selector
 
-Projeto Front-end inspirado no universo dos **X-Men**, desenvolvido com **HTML, CSS e JavaScript puro** durante meus estudos de desenvolvimento web.
+Uma aplicação Front-end inspirada no universo dos **X-Men**, desenvolvida originalmente como projeto de estudos e posteriormente **refatorada para demonstrar evolução técnica em JavaScript, arquitetura Front-end, manipulação do DOM, acessibilidade e responsividade**.
 
-A aplicação apresenta uma interface de seleção de personagens na qual o usuário pode interagir com os cards e visualizar informações do personagem selecionado.
+O projeto começou como uma seleção simples de personagens utilizando **HTML, CSS e JavaScript Vanilla** e evoluiu para uma aplicação orientada a dados, com renderização dinâmica, componentes JavaScript, estado da aplicação, estatísticas, cards detalhados e uma interface responsiva.
 
-> 🔄 Atualmente estou revisitando este projeto como parte da evolução do meu portfólio, utilizando o código original para praticar refatoração, organização de JavaScript, manipulação do DOM, acessibilidade e responsividade.
-
----
-
-# 🌐 Demonstração
-
-🚀 **Aplicação online:**
-
-https://lfbond.github.io/projeto_xmen_clone_devEmDobro/
+> 💡 Mais do que recriar o projeto original, esta refatoração busca mostrar a evolução entre **como eu desenvolvia anteriormente e como estruturaria a mesma solução hoje**.
 
 ---
 
-# 💻 Sobre o projeto
+## 🌐 Demonstração
 
-Este projeto foi desenvolvido durante meus estudos de desenvolvimento Front-end a partir de um projeto educacional do **Dev em Dobro**.
-
-O objetivo inicial era praticar fundamentos importantes da Web utilizando apenas:
+🚀 **Aplicação online**
 
 ```text
-HTML
-CSS
-JavaScript
+https://lfbond.github.io/projeto_xmen_clone_devEmDobro/
 ```
 
-A aplicação trabalha principalmente conceitos de:
+📦 **Repositório**
 
-* estruturação semântica;
-* estilização;
-* responsividade;
-* manipulação do DOM;
-* eventos JavaScript;
-* alteração dinâmica de conteúdo;
-* interação entre usuário e interface.
+```text
+https://github.com/lfbond/projeto_xmen_clone_devEmDobro
+```
 
-Posteriormente decidi revisitá-la como exercício de refatoração.
+> ⚠️ A versão refatorada está sendo desenvolvida na branch `refactor/character-selection`.
+> Após a conclusão dos testes e revisão final, ela será integrada à `main`.
 
-Em vez de simplesmente substituir o projeto antigo por outro, quero utilizá-lo para responder uma pergunta importante:
+---
 
-> **Se eu desenvolvesse esta aplicação hoje, o que faria diferente?**
+# 📸 Antes × Depois
+
+Uma das propostas principais desta refatoração é tornar visível a evolução técnica do projeto.
+
+## 🔴 Antes — versão original
+
+A primeira versão possuía uma interface simples de seleção de personagens.
+
+A interação era baseada principalmente no evento `mouseenter`, alterando diretamente elementos do DOM para exibir:
+
+* imagem;
+* nome;
+* descrição;
+* personagem selecionado.
+
+### Screenshot da versão original
+
+<!-- Substitua o caminho abaixo pela imagem da versão antiga -->
+
+<img width="1900" height="907" alt="x-men-antes" src="https://github.com/user-attachments/assets/8a2ae53b-2cbd-48d7-a866-6d58a4722e92" />
+
+
+**ESPAÇO PARA IMAGEM — ANTES**
+
+---
+
+## 🟢 Depois — versão refatorada
+
+A nova versão transforma o projeto em uma interface baseada em **dados e componentes JavaScript**, apresentando uma coleção muito maior de personagens e informações.
+
+### Screenshot da versão refatorada
+
+<!-- Substitua o caminho abaixo pela imagem da versão nova -->
+
+<img width="1898" height="908" alt="x-men-depois" src="https://github.com/user-attachments/assets/5970b854-92c8-4677-95d5-9d8a67a4cb15" />
+
+
+**ESPAÇO PARA IMAGEM — DEPOIS**
+
+---
+
+# 🔄 Comparação da evolução
+
+| Antes                                              | Depois                                                                       |
+| -------------------------------------------------- | ---------------------------------------------------------------------------- |
+| HTML com personagens escritos manualmente          | Personagens armazenados como objetos JavaScript                              |
+| Dados misturados ao HTML                           | Dados centralizados em `characters.js`                                       |
+| Manipulação direta do DOM                          | Renderização dinâmica                                                        |
+| Seleção principalmente por `mouseenter`            | Elementos interativos utilizando `button`                                    |
+| Poucos dados por personagem                        | Nome, nome real, poder, nível, equipe, status, primeira aparição e biografia |
+| Estrutura JavaScript simples                       | Separação entre dados, estado, renderização e handlers                       |
+| Layout de seleção tradicional                      | Grid responsivo de personagens                                               |
+| Informações exibidas diretamente                   | Cards + modal de detalhes                                                    |
+| Estado representado principalmente por classes CSS | Estado controlado pelo JavaScript                                            |
+| Projeto essencialmente visual                      | Maior preocupação com acessibilidade                                         |
+| Lista pequena de personagens                       | Base expandida de personagens                                                |
+| Responsividade básica                              | Abordagem Mobile First na nova interface                                     |
+| Sem estatísticas                                   | Dashboard resumido dos personagens                                           |
+
+---
+
+# 🎯 Objetivo da refatoração
+
+O objetivo não foi simplesmente adicionar novas funcionalidades.
+
+A proposta foi revisitar um código criado durante uma etapa anterior dos meus estudos e aplicar conceitos que adquiri posteriormente.
+
+A pergunta utilizada como base para a refatoração foi:
+
+> **Se eu tivesse que desenvolver este projeto novamente hoje, como estruturaria a aplicação?**
+
+A partir disso, foram trabalhados conceitos como:
+
+```text
+Código original
+      ↓
+Análise dos problemas
+      ↓
+Separação de responsabilidades
+      ↓
+Estrutura de dados
+      ↓
+Estado da aplicação
+      ↓
+Renderização dinâmica
+      ↓
+Componentização
+      ↓
+Acessibilidade
+      ↓
+Responsividade
+      ↓
+Experiência do usuário
+```
 
 ---
 
 # ✨ Funcionalidades
 
-A aplicação possui:
+A versão refatorada possui:
 
-* seleção interativa de personagens;
-* alteração visual do personagem selecionado;
-* atualização das informações exibidas;
-* imagem correspondente ao personagem;
-* descrição individual;
-* interface inspirada no universo X-Men;
-* layout adaptável a diferentes tamanhos de tela.
+* 🧬 listagem dinâmica de personagens;
+* 🖱️ seleção através de interação com os cards;
+* ⌨️ suporte a navegação utilizando elementos nativos de teclado;
+* ♿ melhorias de acessibilidade;
+* 📱 layout responsivo;
+* 📊 estatísticas dos personagens;
+* 👥 agrupamento por equipes;
+* ⭐ classificação de nível;
+* 🟢 indicação de status;
+* ⚡ informações sobre poderes;
+* 📛 nome real dos personagens;
+* 📚 primeira aparição;
+* 📖 biografia resumida;
+* 🔍 modal com informações completas;
+* 🎨 feedback visual para seleção;
+* ⌨️ tecla `ESC` para remover a seleção;
+* 🖼️ lazy loading das imagens;
+* 🧩 renderização dinâmica dos cards.
+
+---
+
+# 📊 Dashboard de estatísticas
+
+Outra evolução adicionada durante a refatoração foi uma pequena área de estatísticas.
+
+A aplicação calcula dinamicamente informações como:
+
+```text
+🧬 Total de personagens
+👥 Número de equipes
+⭐ Nível médio
+🟢 Personagens ativos
+```
+
+As informações são calculadas diretamente a partir da base de personagens.
+
+```javascript
+getCharacterStats();
+```
+
+Isso significa que novos personagens adicionados ao array são automaticamente considerados nas estatísticas.
+
+---
+
+# 🗃️ Dados separados da interface
+
+Uma das mudanças mais importantes foi retirar os dados dos personagens do HTML.
+
+## Antes
+
+Os dados estavam diretamente associados aos elementos:
+
+```html
+<li
+  class="personagem"
+  id="wolverine"
+  data-name="Wolverine"
+  data-description="..."
+>
+```
+
+Essa solução funciona em aplicações pequenas, mas aumenta o acoplamento entre conteúdo e interface.
+
+## Depois
+
+Os personagens passaram a ser representados como objetos:
+
+```javascript
+{
+  id: "wolverine",
+  name: "Wolverine",
+  realName: "Logan (James Howlett)",
+  power: "Fator de cura, garras de adamantium, sentidos apurados",
+  image: "./src/assets/card-wolverine.jpg",
+  team: "X-Men",
+  level: 5,
+  status: "Ativo",
+  firstAppearance: "The Incredible Hulk #180 (1974)",
+  bio: "..."
+}
+```
+
+Agora existe uma separação muito mais clara entre:
+
+```text
+DADOS
+  ↓
+LÓGICA
+  ↓
+RENDERIZAÇÃO
+  ↓
+INTERFACE
+```
+
+---
+
+# 🧩 Renderização dinâmica
+
+Na versão original, os personagens precisavam existir previamente no HTML.
+
+Na versão refatorada, os cards são construídos pelo JavaScript.
+
+```javascript
+state.characters.forEach((char) => {
+  const card = createCharacterCard(char);
+  container.appendChild(card);
+});
+```
+
+Essa mudança facilita:
+
+* inclusão de novos personagens;
+* manutenção dos dados;
+* reutilização da interface;
+* filtros futuros;
+* buscas;
+* ordenação;
+* integração futura com APIs.
+
+---
+
+# 🧠 Estado da aplicação
+
+Outra mudança importante foi introduzir um estado simples para controlar a aplicação.
+
+```javascript
+let state = {
+  selectedId: null,
+  characters: characters,
+};
+```
+
+A seleção deixa de depender exclusivamente do estado visual do HTML.
+
+Funções específicas controlam esse comportamento:
+
+```javascript
+selectCharacter(id);
+
+deselectCharacter();
+
+toggleCharacter(id);
+
+isCharacterSelected(id);
+```
+
+Essa abordagem aproxima o projeto de conceitos utilizados em bibliotecas modernas como React.
+
+---
+
+# 🧱 Separação de responsabilidades
+
+A lógica foi dividida em diferentes responsabilidades.
+
+```text
+src/
+│
+├── assets/
+│   └── imagens dos personagens
+│
+├── components/
+│   └── CharacterSelector.js
+│
+├── config/
+│   └── images.js
+│
+├── css/
+│   ├── reset.css
+│   ├── estilos.css
+│   ├── responsivo.css
+│   └── character-selector.css
+│
+├── data/
+│   └── characters.js
+│
+└── js/
+    └── index.js
+```
+
+### `data/characters.js`
+
+Responsável pela base de dados dos personagens e funções auxiliares.
+
+### `components/CharacterSelector.js`
+
+Responsável por:
+
+* estado;
+* seleção;
+* criação dos cards;
+* atualização da interface;
+* eventos;
+* modal de detalhes.
+
+### `character-selector.css`
+
+Responsável pela nova interface dos cards, estados visuais, modal, estatísticas e comportamento responsivo.
+
+---
+
+# 🔎 Funções auxiliares
+
+A base de personagens também ganhou funções reutilizáveis.
+
+### Buscar personagem pelo ID
+
+```javascript
+getCharacterById(id);
+```
+
+### Filtrar por equipe
+
+```javascript
+getCharactersByTeam(team);
+```
+
+### Filtrar por nível
+
+```javascript
+getCharactersByLevel(minLevel);
+```
+
+### Filtrar por status
+
+```javascript
+getCharactersByStatus(status);
+```
+
+### Pesquisar personagens
+
+```javascript
+searchCharacters(searchTerm);
+```
+
+### Personagens aleatórios
+
+```javascript
+getRandomCharacters(count);
+```
+
+### Estatísticas
+
+```javascript
+getCharacterStats();
+```
+
+Essas funções deixam o projeto preparado para futuras funcionalidades de **busca, filtros e ordenação**.
+
+---
+
+# ♿ Acessibilidade
+
+A acessibilidade foi um dos pontos centrais da refatoração.
+
+Na versão original, a principal interação acontecia através do mouse.
+
+A versão nova utiliza elementos interativos nativos:
+
+```html
+<button>
+```
+
+e atributos como:
+
+```html
+aria-label
+aria-selected
+aria-modal
+aria-labelledby
+```
+
+Também foram adicionados:
+
+* `:focus-visible`;
+* textos alternativos nas imagens;
+* indicação textual de status;
+* labels de acessibilidade;
+* interação através do teclado;
+* fechamento utilizando `ESC`;
+* estrutura de modal utilizando `role="dialog"`.
+
+Exemplo:
+
+```javascript
+button.setAttribute(
+  "aria-label",
+  `Selecionar ${char.name}`
+);
+
+button.setAttribute(
+  "aria-selected",
+  isSelected ? "true" : "false"
+);
+```
+
+---
+
+# 📱 Responsividade
+
+A nova interface utiliza uma abordagem **Mobile First**.
+
+### Mobile
+
+```text
+1 coluna
+```
+
+### Tablet
+
+```text
+2 colunas
+```
+
+### Desktop
+
+```text
+4 colunas
+```
+
+Exemplo:
+
+```css
+.character-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .character-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1040px) {
+  .character-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+```
+
+---
+
+# 🖼️ Comparação visual responsiva
+
+## Desktop
+
+### Antes
+
+**ESPAÇO PARA SCREENSHOT DESKTOP — ANTES**
+
+<img width="1185" height="840" alt="desktop-antes" src="https://github.com/user-attachments/assets/dcf7ca38-aa52-406c-b0fc-b5c4b0b51212" />
+
+
+### Depois
+
+**ESPAÇO PARA SCREENSHOT DESKTOP — DEPOIS**
+
+<img width="1363" height="904" alt="desktop-depois" src="https://github.com/user-attachments/assets/37b2c35c-0336-4086-90c8-10cc8ae19d01" />
+
+
+---
+
+## Mobile
+
+### Antes
+
+**ESPAÇO PARA SCREENSHOT MOBILE — ANTES**
+
+<img width="479" height="662" alt="mobile-antes" src="https://github.com/user-attachments/assets/68a6967d-0dcc-4dd0-b9a2-c8d6e2639ebd" />
+
+
+### Depois
+
+**ESPAÇO PARA SCREENSHOT MOBILE — DEPOIS**
+
+<img width="488" height="889" alt="mobile-depois" src="https://github.com/user-attachments/assets/4a87d94c-b619-4749-8e0f-5db062b42425" />
+
+
+---
+
+# 🪟 Modal de detalhes
+
+Cada personagem possui a opção:
+
+```text
+📖 Ver mais
+```
+
+que abre uma visualização contendo informações adicionais.
+
+O modal apresenta:
+
+* nome;
+* imagem;
+* nome real;
+* poder;
+* nível;
+* equipe;
+* status;
+* primeira aparição;
+* biografia.
+
+Ele também pode ser fechado:
+
+```text
+✕ botão fechar
+
+ESC
+
+clique fora do conteúdo
+```
 
 ---
 
@@ -64,366 +545,125 @@ A aplicação possui:
 
 ### HTML5
 
-Utilizado para estruturar os elementos da página.
+Utilizado para estruturar a aplicação e fornecer a base semântica da interface.
 
 ### CSS3
 
-Responsável pela:
+Utilizado para:
 
-* estilização;
-* layout;
+* CSS Grid;
+* Flexbox;
 * responsividade;
-* estados visuais;
-* destaque do personagem selecionado.
+* Mobile First;
+* animações;
+* estados de interação;
+* `focus-visible`;
+* modal;
+* cards;
+* dashboard.
 
-### JavaScript
+### JavaScript ES Modules
 
 Utilizado para:
 
-* selecionar elementos;
-* manipular o DOM;
-* trabalhar com eventos;
-* identificar o personagem selecionado;
-* alterar informações dinamicamente;
-* controlar estados visuais da interface.
+* manipulação do DOM;
+* módulos;
+* arrays e objetos;
+* estado;
+* eventos;
+* `CustomEvent`;
+* renderização dinâmica;
+* filtros;
+* funções reutilizáveis;
+* criação programática de elementos.
 
 ---
 
 # 🧠 Conceitos praticados
 
-Durante o desenvolvimento foram trabalhados conceitos fundamentais de JavaScript.
-
-## Seleção de elementos
-
-```javascript
-document.querySelector()
-document.querySelectorAll()
-```
-
----
-
-## Eventos
-
-A interface utiliza eventos para identificar a interação do usuário com os personagens.
-
-```javascript
-element.addEventListener(...)
-```
-
----
-
-## Manipulação do DOM
-
-Após selecionar um personagem, o JavaScript atualiza dinamicamente elementos da interface.
-
-Isso permite alterar:
-
-* personagem ativo;
-* imagem;
-* nome;
-* descrição;
-* classes CSS.
-
----
-
-## Classes CSS dinâmicas
-
-O JavaScript controla classes responsáveis por indicar qual personagem está atualmente selecionado.
-
-Conceitos praticados:
-
-```javascript
-classList.add()
-classList.remove()
-```
-
----
-
-## Data Attributes
-
-Os elementos podem utilizar atributos `data-*` para relacionar informações presentes no HTML com a lógica JavaScript.
-
-Exemplo:
-
-```html
-<li data-name="Wolverine">
-```
-
-Essa abordagem permite associar elementos da interface aos respectivos personagens.
-
----
-
-# 🔄 Evolução do projeto
-
-A versão original foi criada durante uma etapa anterior dos meus estudos.
-
-Em 2026 decidi revisitá-la para aplicar conhecimentos adquiridos posteriormente.
-
-O objetivo não é simplesmente adicionar frameworks.
-
-Antes disso, quero melhorar a implementação utilizando corretamente os fundamentos da plataforma Web.
-
----
-
-# 🧱 Versão original
+A refatoração permitiu trabalhar principalmente:
 
 ```text
-HTML
-  ↓
-CSS
-  ↓
-JavaScript
-  ↓
+JavaScript Vanilla
+       ↓
+ES Modules
+       ↓
+Estrutura de dados
+       ↓
+Estado
+       ↓
 DOM
-  ↓
+       ↓
+Renderização dinâmica
+       ↓
+Componentização
+       ↓
 Eventos
+       ↓
+Acessibilidade
+       ↓
+Responsividade
 ```
 
-Principais objetivos da versão inicial:
+Além disso:
 
-* aprender manipulação do DOM;
-* trabalhar eventos;
-* alterar elementos dinamicamente;
-* desenvolver interfaces responsivas;
-* praticar HTML, CSS e JavaScript.
+* Clean Code;
+* separação de responsabilidades;
+* organização de arquivos;
+* reutilização de funções;
+* gerenciamento simples de estado;
+* tratamento de eventos;
+* design responsivo;
+* experiência do usuário;
+* Git e branches.
 
 ---
 
-# 🚀 Refatoração planejada
+# 📈 Evolução técnica
 
-## Etapa 1 — Organização do JavaScript
+A diferença mais importante entre as duas versões não está apenas no visual.
 
-* [ ] revisar nomes de variáveis e funções;
-* [ ] eliminar código duplicado;
-* [ ] separar responsabilidades;
-* [ ] criar funções menores;
-* [ ] melhorar legibilidade;
-* [ ] utilizar nomes mais descritivos;
-* [ ] revisar manipulação do DOM.
-
-Exemplo da ideia:
-
-```javascript
-function selecionarPersonagem(personagem) {
-  removerPersonagemSelecionado();
-  adicionarPersonagemSelecionado(personagem);
-  atualizarPersonagemPrincipal(personagem);
-}
-```
-
-A intenção é tornar o código mais fácil de:
-
-```text
-ler
-↓
-entender
-↓
-testar
-↓
-manter
-```
-
----
-
-# ♿ Etapa 2 — Acessibilidade
-
-Uma das principais melhorias planejadas para esta nova versão é tornar a seleção de personagens acessível sem depender exclusivamente do mouse.
-
-A aplicação deverá permitir interação através de:
-
-```text
-Mouse
-Teclado
-Touch
-```
-
-Eventos que serão estudados e implementados:
-
-```javascript
-click
-mouseenter
-focus
-keydown
-```
-
----
-
-## Navegação por teclado
-
-Planejado:
-
-```text
-← personagem anterior
-
-→ próximo personagem
-
-Enter selecionar
-
-Space selecionar
-```
-
-Também serão revisados:
-
-* foco visível;
-* ordem de navegação;
-* elementos interativos;
-* atributos ARIA quando necessários;
-* textos alternativos;
-* contraste;
-* semântica HTML.
-
----
-
-# 📱 Etapa 3 — Responsividade
-
-Revisar o comportamento da aplicação em:
-
-```text
-Desktop
-Tablet
-Smartphone
-```
-
-Pontos de atenção:
-
-* tamanho dos cards;
-* espaçamentos;
-* tipografia;
-* imagem principal;
-* área de toque;
-* quebra de layout;
-* orientação da tela.
-
----
-
-# 📦 Etapa 4 — Dados separados da interface
-
-Outra melhoria planejada é reduzir o acoplamento entre os dados dos personagens e o HTML.
-
-Uma possível estrutura será:
-
-```javascript
-const personagens = [
-  {
-    id: "ciclope",
-    nome: "Ciclope",
-    descricao: "...",
-    imagem: "..."
-  },
-
-  {
-    id: "wolverine",
-    nome: "Wolverine",
-    descricao: "...",
-    imagem: "..."
-  }
-];
-```
-
-Dessa forma, os personagens passam a ser tratados como **dados da aplicação**.
-
-Isso permitirá praticar:
-
-* arrays;
-* objetos;
-* `map`;
-* funções;
-* renderização dinâmica;
-* separação entre dados e apresentação.
-
----
-
-# 🧩 Etapa 5 — Renderização dinâmica
-
-Em uma evolução posterior, os cards poderão ser gerados através do JavaScript.
-
-Conceitualmente:
-
-```javascript
-personagens.map(personagem => {
-  // criar card
-});
-```
-
-Isso reduz a repetição no HTML e facilita a inclusão de novos personagens.
-
----
-
-# ⚛️ Possível versão futura — React + TypeScript
-
-Depois de concluir a refatoração utilizando JavaScript puro, pretendo reconstruir o projeto utilizando React e TypeScript.
-
-A intenção será comparar as duas abordagens.
-
-### Versão Vanilla
+## Versão original
 
 ```text
 HTML
+ ↓
 CSS
+ ↓
 JavaScript
-DOM
+ ↓
+querySelector
+ ↓
+Eventos
+ ↓
+Manipulação direta do DOM
 ```
 
-### Versão React
+## Versão refatorada
 
 ```text
-React
-TypeScript
-Components
-Props
-State
-Events
+Dados
+ ↓
+Estado
+ ↓
+Componentes
+ ↓
+Renderização
+ ↓
+Eventos
+ ↓
+Atualização da UI
 ```
 
-Possível estrutura:
+Essa evolução demonstra uma mudança de pensamento:
 
-```text
-src/
-
-├── components/
-│   ├── CharacterCard/
-│   ├── CharacterList/
-│   └── CharacterDetails/
-│
-├── data/
-│   └── characters.ts
-│
-├── types/
-│   └── Character.ts
-│
-└── App.tsx
-```
-
----
-
-# 📚 Objetivos de aprendizado
-
-A refatoração deste projeto será utilizada para aprofundar:
-
-* JavaScript;
-* DOM;
-* eventos;
-* arrays;
-* objetos;
-* funções;
-* modularização;
-* acessibilidade;
-* responsividade;
-* Git;
-* organização de código.
-
-Posteriormente:
-
-* React;
-* TypeScript;
-* componentização;
-* gerenciamento de estado.
+> de apenas fazer a interface funcionar para estruturar o código pensando em manutenção, expansão e reutilização.
 
 ---
 
 # ⚙️ Como executar
 
-## Clone o repositório
+Clone o projeto:
 
 ```bash
 git clone https://github.com/lfbond/projeto_xmen_clone_devEmDobro.git
@@ -435,123 +675,155 @@ Entre na pasta:
 cd projeto_xmen_clone_devEmDobro
 ```
 
-Como o projeto utiliza HTML, CSS e JavaScript puro, ele não necessita de instalação de dependências.
+Para acessar a versão em desenvolvimento:
 
-Você pode abrir:
-
-```text
-index.html
+```bash
+git checkout refactor/character-selection
 ```
 
-diretamente no navegador.
+Como o projeto utiliza JavaScript Vanilla e ES Modules, não é necessário instalar dependências.
 
-Para uma melhor experiência de desenvolvimento, também pode utilizar uma extensão como **Live Server** no VS Code.
+Recomenda-se executar através de um servidor local, por exemplo:
+
+```text
+Live Server
+```
+
+no Visual Studio Code.
 
 ---
 
-# 🌐 Deploy
+# 🌿 Estratégia de desenvolvimento
 
-A aplicação está publicada através do **GitHub Pages**.
-
-🔗 Aplicação:
-
-https://lfbond.github.io/projeto_xmen_clone_devEmDobro/
-
----
-
-# 🌿 Estratégia de refatoração
-
-Para documentar minha evolução e praticar um fluxo de desenvolvimento mais próximo do utilizado profissionalmente, as melhorias poderão seguir:
+A refatoração também foi utilizada para praticar um fluxo mais próximo de um ambiente profissional.
 
 ```text
-Issue
- ↓
-Branch
- ↓
-Desenvolvimento
- ↓
-Commit
- ↓
-Pull Request
- ↓
-Code Review
- ↓
-Merge
+main
+  │
+  └── refactor/character-selection
+             │
+             ├── refatoração
+             ├── novos dados
+             ├── componentes
+             ├── acessibilidade
+             ├── responsividade
+             └── revisão
+                    ↓
+               Pull Request
+                    ↓
+                  main
 ```
 
-Mesmo sendo um projeto individual, esse processo permite praticar organização e versionamento de código.
-
----
-
-# 📝 Exemplos de commits
-
-As próximas alterações serão registradas utilizando commits mais descritivos.
-
-Exemplos:
-
-```text
-refactor: improve character selection logic
-
-feat: add click character selection
-
-feat: add keyboard navigation
-
-a11y: improve character cards accessibility
-
-refactor: separate character data from markup
-
-feat: render characters dynamically
-
-fix: improve mobile layout
-
-docs: document project refactoring
-```
+Isso permite preservar a versão original enquanto a nova implementação é desenvolvida e validada.
 
 ---
 
 # 📋 Roadmap
 
-### JavaScript
+## Concluído na refatoração
 
-* [ ] Refatorar seleção dos personagens
-* [ ] Separar responsabilidades
-* [ ] Criar estrutura de dados dos personagens
-* [ ] Renderizar personagens dinamicamente
+* [x] Separar dados dos personagens
+* [x] Criar estrutura de objetos
+* [x] Criar módulo `characters.js`
+* [x] Criar `CharacterSelector`
+* [x] Renderizar cards dinamicamente
+* [x] Criar estado da aplicação
+* [x] Implementar seleção por clique
+* [x] Adicionar feedback visual
+* [x] Melhorar navegação por teclado
+* [x] Adicionar atributos de acessibilidade
+* [x] Implementar `focus-visible`
+* [x] Criar modal de detalhes
+* [x] Criar estatísticas
+* [x] Expandir quantidade de personagens
+* [x] Criar funções de busca e filtros
+* [x] Implementar grid responsivo
+* [x] Melhorar versão mobile
 
-### Interação
+## Próximas melhorias
 
-* [ ] Adicionar seleção através de click
-* [ ] Adicionar suporte a touch
-* [ ] Implementar navegação por teclado
+* [ ] Revisar e remover código legado não utilizado
+* [ ] Revisar completamente a semântica ARIA
+* [ ] Melhorar gerenciamento de foco do modal
+* [ ] Adicionar campo de pesquisa à interface
+* [ ] Adicionar filtros por equipe
+* [ ] Adicionar filtros por nível
+* [ ] Implementar ordenação
+* [ ] Adicionar testes automatizados
+* [ ] Validar acessibilidade com Lighthouse
+* [ ] Validar performance
+* [ ] Otimizar imagens
+* [ ] Fazer merge da branch de refatoração
+* [ ] Atualizar GitHub Pages
+* [ ] Criar versão React + TypeScript
 
-### Acessibilidade
+---
 
-* [ ] Melhorar navegação por foco
-* [ ] Revisar HTML semântico
-* [ ] Adicionar atributos ARIA quando necessários
-* [ ] Revisar textos alternativos
-* [ ] Melhorar foco visual
+# ⚛️ Próxima evolução — React + TypeScript
 
-### Responsividade
+Depois de consolidar a versão Vanilla JavaScript, uma possível próxima etapa é reconstruir a aplicação utilizando:
 
-* [ ] Revisar versão mobile
-* [ ] Melhorar área de toque
-* [ ] Revisar tipografia
-* [ ] Testar diferentes resoluções
+```text
+React
++
+TypeScript
+```
 
-### Evolução
+Uma possível arquitetura seria:
 
-* [ ] Criar versão React
-* [ ] Migrar versão React para TypeScript
-* [ ] Adicionar testes
+```text
+src/
+│
+├── components/
+│   ├── CharacterCard/
+│   ├── CharacterGrid/
+│   ├── CharacterDetails/
+│   ├── CharacterStats/
+│   └── CharacterFilters/
+│
+├── data/
+│   └── characters.ts
+│
+├── types/
+│   └── Character.ts
+│
+├── hooks/
+│   └── useCharacters.ts
+│
+└── App.tsx
+```
+
+Isso permitirá comparar diretamente:
+
+```text
+Vanilla JavaScript
+        VS
+React + TypeScript
+```
+
+e demonstrar como os mesmos conceitos de **estado, componentes, eventos e renderização** são tratados nas duas abordagens.
 
 ---
 
 # 🎓 Origem do projeto
 
-Projeto desenvolvido originalmente durante meus estudos utilizando conteúdos e desafios educacionais do **Dev em Dobro**.
+O projeto foi desenvolvido originalmente durante meus estudos a partir de conteúdos educacionais do **Dev em Dobro**.
 
-A versão presente neste repositório e suas futuras refatorações fazem parte do meu processo pessoal de aprendizado, evolução técnica e construção de portfólio.
+A versão atual utiliza esse projeto inicial como base para um exercício pessoal de refatoração e evolução técnica.
+
+Em vez de descartar projetos antigos, a proposta é utilizá-los para demonstrar:
+
+```text
+Como eu programava
+        ↓
+O que aprendi
+        ↓
+O que identifiquei
+        ↓
+O que refatorei
+        ↓
+Como estruturaria hoje
+```
 
 ---
 
@@ -561,22 +833,39 @@ A versão presente neste repositório e suas futuras refatorações fazem parte 
 
 Desenvolvedor Front-end / Full Stack JavaScript Jr.
 
-Tecnologias em estudo e desenvolvimento:
+### Stack
 
-`JavaScript` • `TypeScript` • `React` • `Node.js`
+```text
+JavaScript • TypeScript • React • Node.js
+HTML • CSS • Git • GitHub
+```
 
-GitHub:
+### GitHub
 
+```text
 https://github.com/lfbond
+```
 
 ---
 
-## ⭐ Projeto em evolução
+# ⭐ Sobre esta refatoração
 
-Este repositório também funciona como registro da minha evolução como desenvolvedor.
+Este projeto representa mais do que uma atualização visual.
 
-Em vez de esconder códigos desenvolvidos durante etapas anteriores dos meus estudos, pretendo utilizá-los para demonstrar:
+Ele documenta a evolução de uma implementação simples baseada em manipulação direta do DOM para uma estrutura mais organizada baseada em:
 
-**como eu programava → o que aprendi → o que identifiquei → como refatorei → como faria hoje.**
+**dados → estado → componentes → eventos → renderização → interface.**
 
-🚀 As próximas melhorias serão documentadas através dos commits e do histórico do projeto.
+O objetivo é demonstrar que evolução como desenvolvedor não significa apenas aprender novos frameworks, mas também saber **revisitar uma solução existente, identificar limitações e melhorar sua arquitetura utilizando fundamentos sólidos da Web**.
+
+---
+
+## 🚀 Status
+
+```text
+🟡 Refatoração avançada
+🌿 Branch: refactor/character-selection
+🧪 Próxima etapa: revisão + testes
+🔀 Depois: merge → main
+🌐 Final: atualização do GitHub Pages
+```
