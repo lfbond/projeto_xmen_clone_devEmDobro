@@ -475,16 +475,16 @@ Exemplo:
 
 ### Antes
 
-**ESPAÇO PARA SCREENSHOT DESKTOP — ANTES**
-
 <img width="1185" height="840" alt="desktop-antes" src="https://github.com/user-attachments/assets/dcf7ca38-aa52-406c-b0fc-b5c4b0b51212" />
 
 
 ### Depois
 
-**ESPAÇO PARA SCREENSHOT DESKTOP — DEPOIS**
-
 <img width="1363" height="904" alt="desktop-depois" src="https://github.com/user-attachments/assets/37b2c35c-0336-4086-90c8-10cc8ae19d01" />
+
+Modal: 
+
+<img width="1264" height="852" alt="desktop-modal-depois" src="https://github.com/user-attachments/assets/a10c51ce-7301-4e41-8100-4abdc06bb337" />
 
 
 ---
